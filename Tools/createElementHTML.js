@@ -7,30 +7,30 @@
 // if all the rifht attributes have been added.
 
 class tagHTML {
-	constructor(name, attributes, attributes_values, data) {
+	constructor(name, attributes, attributesValues, data) {
 		this.name = name;
 		this.attributes = attributes;
-		this.attributes_values = attributes_values;
+		this.attributesValues = attributesValues;
 		this.data = data;
 	}
 }
 
-function createElemHTML(name, attributes, attributes_values, data, parent) {
-	const tag = new tagHTML(name, attributes, attributes_values, data);
-	let new_elem = document.createElement(tag.name);
-	if (!new_elem)
+function createElemHTML(name, attributes, attributesValues, data, parent) {
+	const tag = new tagHTML(name, attributes, attributesValues, data);
+	let newElem = document.createElement(tag.name);
+	if (!newElem)
 		return (-1);
-	let number_of_attributes = 0;
-	while (tag.attributes[number_of_attributes++])
-		new_elem.setAttribute(tag.attributes[number_of_attributes], tag.attributes_values[number_of_attributes]);
+	let numberOfAttributes = 0;
+	while (tag.attributes[numberOfAttributes++])
+		newElem.setAttribute(tag.attributes[numberOfAttributes], tag.attributesValues[numberOfAttributes]);
 	let parentTag = document.querySelectorAll(parent);
 	if (parentTag.length > 0)
-		parentTag[0].append(new_elem);
+		parentTag[0].append(newElem);
 	else
-		document.body.append(new_elem);
+		document.body.append(newElem);
 	if (data)
-		new_elem.innerHTML = data;
-	return (number_of_attributes);
+		newElem.innerHTML = data;
+	return (numberOfAttributes);
 }
 
 // USAGE :
